@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ title }}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{ root }}css/main.css">
+  <link rel="icon" type="image/png" href="{{ root }}favicon.png">
+</head>
+<body>
+{{ content }}
+<footer>
+<hr>
+<p>
+  <a href="{{ root }}{{ index }}">Home</a>
+  <a href="{{ root }}rss.xml">Feed</a>
+  <a href="https://twitter.com/sunainapai">Twitter</a>
+  <a href="https://github.com/sunainapai">GitHub</a>
+</p>
+<p>&copy; {{ current_year }} Sunaina Pai</p>
+<p>This website is powered by
+<a href="https://github.com/sunainapai/makesite">makesite.py</a>.
+</p>
+</footer>
+</body>
+</html>
