@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+<title>tmug</title>
+<link>https://tmug.github.io/</link>
+<atom:link href="https://tmug.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+<description>Feed from tmug</description>
+
+<item>
+<title>Reliable, Scalable, Maintainable Applications</title>
+<link>https://tmug.github.io/ddia/chapter-01/</link>
+<guid>https://tmug.github.io/ddia/chapter-01/</guid>
+<description>
+<![CDATA[
+<p>
+Data-intensive applications are built from standard building blocks. They need to: Store data - databases Speed up reads - caches Search data - search indexes&nbsp;<a href="https://tmug.github.io/ddia/chapter-01/">...</a>
+</p>
+<p><a href="https://tmug.github.io/ddia/chapter-01/">Read More</a></p>
+]]>
+</description>
+<pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+</item>
+
+
+</channel>
+</rss>

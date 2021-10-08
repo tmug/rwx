@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reliable, Scalable, Maintainable Applications</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../../css/main.css">
+  <link rel="icon" type="image/png" href="../../favicon.png">
+</head>
+<body>
+<h1>Reliable, Scalable, Maintainable Applications</h1>
+<div class="meta">Published on 2021-01-04</div>
+<p>Data-intensive applications are built from standard building blocks.
+They need to:</p>
+<ol>
+<li>Store data - databases</li>
+<li>Speed up reads - caches</li>
+<li>Search data - search indexes</li>
+<li>Send a message to another process for asynchronous processing -
+stream processing</li>
+<li>Periodically crunch accumulated data - batch processing</li>
+</ol>
+<p>Which ones to use and how we combine them depends on the application we
+are building. We might have subtasks, a subtask might be handled really
+well by a particular tool and we combine many such tools in our
+application code to build our application. For example we may have a
+primary database, a search index, and a cache and it is usually the
+application code that keeps all three in sync.</p>
+<p>We need to ensure the following when building data-systems:</p>
+<ol>
+<li>Reliablity: Continuing to work correctly as per expectations even
+when things hardware or software go wrong or human operators make
+mistakes</li>
+<li>Scalabilty: Reasonable ways of dealing with the growth of data,
+traffic or complexity</li>
+<li>Maintainabilty: Developers and operations can work productively
+while maintaining exisiting system as well enhancing it</li>
+</ol>
+<h2>Reliability</h2>
+<p>Typical expectations of any application are:</p>
+<ol>
+<li>Work as expected by user</li>
+<li>Tolerate when users make mistakes or mishandle the system</li>
+<li>Give good performance normally</li>
+<li>Prevent unauthorized access and protect sensitive data</li>
+</ol>
+<p>A system is reliable if it continues to meet the above expectations even
+when things go wrong.</p>
+<p>A fault is when component stops functioning as expected whereas a
+failure is when the system as whole stops functioning, could be due to
+multiple faults. A system that anticipates relevant faults and copes
+with them is called a fault-tolerant/resilient system.</p>
+<p>Many critical bugs in production turn out to be due to poor error
+handling or due to scenarios that were never encountered before. It is
+good to deliberately increase faults when testing by bringing down
+services at random to ensure that fault-tolerate mechanisms are in-place
+and are working correctly. Example: Netflix Chaos Monkey.</p>
+<p>We should prefer tolerating faults over preventing faults. Exception to
+this is when security matters, for example, actions such as malicious
+access to systems or unauthorized access to sensitive data can't be
+undone.</p>
+<h3>Hardware Faults</h3>
+<p>For most applications, redundancy of individual hardware components
+suffices. However as applications use mutiple machines to deal with
+increased data volume, the rate of hardware faults increases. The move
+is towards building systems that can tolerate loss of entire machines. A
+single node server will have downtime, for example, due to reboot needed
+during upgrades or application of OS security patches. A fault-tolerant
+server with multiple nodes can be patched one node at a time, with no
+system downtime also known as rolling upgrade.</p>
+<h3>Software Errors</h3>
+<p>Hardware errors are mostly independent. Software errors are systematic
+errors within the system. Since they could be applicable to all nodes,
+they can bring down the system. E.g., software bug. No one single
+solution to deal with this. Lot of things can help - testing, process
+isolation, crashing and restarting services during testing, monitoring,
+alerting, etc.</p>
+<h3>Human Errors</h3>
+<p>Humans are unreliable. Most of the time outages are caused by
+misconfiguration by operators. Systems can be made more reliable by:</p>
+<ol>
+<li>Minimizing opportunities for errors, for example, good APIs, simple
+and easy to use admin interfaces that make it easy to do the right
+thing.</li>
+<li>Provding fully featured sandbox environment in production where
+people can experiment with real data without affecting real users.</li>
+<li>Testing at all levels - unit testing, integration testing, manual
+and automated testing.</li>
+<li>Providing ways to recover from human errors quickly such as
+configuration rollback, gradually rolling out patches, and ability
+to recompute data incase the previous computation went wrong.</li>
+<li>Detailed and clear monitoring such as performance metrics and error
+rates. Known as telemetry in other engineering disciplines.</li>
+<li>Share best practices and training.</li>
+</ol>
+<p>Reliability is important even if the application is non-critical. If a
+system is not reliable it can cause lost productivity, legal issues if
+data is reported incorrectly, revenue loss, damage to reputation.</p>
+
+
+<footer>
+<hr>
+<p>
+  <a href="../../">Home</a>
+  <a href="../../rss.xml">Feed</a>
+  <a href="https://twitter.com/sunainapai">Twitter</a>
+  <a href="https://github.com/sunainapai">GitHub</a>
+</p>
+<p>&copy; 2021 Sunaina Pai</p>
+<p>This website is powered by
+<a href="https://github.com/sunainapai/makesite">makesite.py</a>.
+</p>
+</footer>
+</body>
+</html>
