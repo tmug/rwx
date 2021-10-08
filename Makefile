@@ -25,15 +25,24 @@ venv: FORCE
 	echo . ~/.venv/makesite/bin/activate > venv
 	. ./venv && pip install commonmark
 
-publish: site
-	git config user.name "publish"
-	git config user.email "publish@localhost"
-	git branch -D publish; :
-	git switch --orphan publish
-	mv _site/* .
+live:
+	pwd | grep live$$ || false
+	git init
+	git config user.name make
+	git config user.email make@localhost
+	# Prepare live branch.
+	git checkout -b live
 	git add .
-	git commit -m "Publish blog ($$(date -u +"%Y-%m-%d %H:%M:%S"))"
-	git log -n 5
-	git push -f origin publish
+	git commit -m "Publish live ($$(date -u +"%Y-%m-%d %H:%M:%S"))"
+	git log
+	# Publish website.
+	git remote add origin https://github.com/tmug/rwx.git
+	git push -f origin live
+
+pub: site
+	git push
+	rm -rf /tmp/live
+	mv _site /tmp/live
+	REPO_DIR="$$PWD"; cd /tmp/live && make -f "$$REPO_DIR/Makefile" live
 
 FORCE:
